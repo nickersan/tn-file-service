@@ -3,7 +3,7 @@ package com.tn.file.api;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
@@ -28,10 +28,10 @@ import com.tn.file.repository.FileRepository;
 @Slf4j
 @RestController
 @RequestMapping("/v1")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class FileController
 {
-  private FileRepository fileRepository;
+  private final FileRepository fileRepository;
 
   @GetMapping(path = "/{key}")
   public ResponseEntity<StreamingResponseBody> get(@PathVariable("key") String key)
